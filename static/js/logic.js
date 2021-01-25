@@ -37,10 +37,20 @@ function getColor(depth) = {
     //switch will be useful to come up with 5 colors or so to bin earthquakes into
 
     switch(true) {
-        
-
+        case depth > 100:
+            return "#d41002";
+        case depth > 80:
+            return "#e04604";
+        case depth > 60:
+            return "#e08804";
+        case depth > 40:
+            return "#d9e004";
+        case depth > 20:
+            return "#8fe004";
+        default:
+            return "#07f22b";
+        }
     }
-}
     
 
 
