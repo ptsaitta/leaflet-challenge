@@ -84,6 +84,17 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
         style: featStyle,
 
+        //add a popup of data for each marker when hovered over
+
+        onEachFeature: function(feature, layer) {
+            layer.bindPopup(
+                "Magnitude Recorded: " + features.properties.mag +
+                " Depth of Event: " + features.geometry.coordinates[2] + 
+                " General Location: " + features.properties.place + 
+                " Time: " + features.properties.time
+            );
+        }
+
 
     }).addTo(map);
 
