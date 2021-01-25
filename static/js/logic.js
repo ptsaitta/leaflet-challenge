@@ -88,20 +88,37 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
         style: featStyle,
 
-        //add a popup of data for each marker when hovered over
+        //add a popup of data for each marker when clicked on
 
         onEachFeature: function(feature, layer) {
             layer.bindPopup(
                 "Magnitude Recorded: " + feature.properties.mag +
-                " Depth of Event: " + feature.geometry.coordinates[2] + 
-                " General Location: " + feature.properties.place + 
-                " Time: " + feature.properties.time
+                "<br>Depth of Event: " + feature.geometry.coordinates[2] + 
+                "<br>General Location: " + feature.properties.place + 
+                "<br>Time: " + feature.properties.time
             );
         }
 
 
     }).addTo(map);
 
+    //Now we need to create a legend and add it to the map.
+    var legend = L.control({
+        position: "topright"
+    });
+    
+    //add to fill the legend with the relevant info
+    legend.onAdd = function() {
+        var div = L.DomUtil.create("div", "info legend");
+        var colors = ["#07f22b","#8fe004","#d9e004","#e08804","#e04604","#d41002"]
+        var levels = [0, 20, 40, 60, 80, 100]
+        
+
+    
 
 
+
+    }
+
+    legend.addTo(map);
 });
