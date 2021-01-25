@@ -35,7 +35,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 //depth at third geometric coordinate
 
     function featStyle(feature) {
-        return{
+        return {
             fillColor: getColor(feature.geometry.coordinates[2]),
             radius: getRadius(feature.property.mag)
         };
@@ -46,7 +46,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
     //color is defined by feat DEPTH
 
-    function getColor(depth) = {
+    function getColor(depth) {
     //switch will be useful to come up with 5 colors or so to bin earthquakes into
 
         switch(true) {
@@ -73,13 +73,16 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     }
 
 
+    //add layer for data points (feat) with circle markers centered on coords
 
-
+    L.geoJson(data, {
+        pointToLayer: function(feature, coordinates) {
+            return L.circleMarker(coordinates);
+        };
+    
+    
+    })
 
 
 
 }
-
-
-
-
