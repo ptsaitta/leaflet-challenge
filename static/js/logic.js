@@ -78,10 +78,14 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     L.geoJson(data, {
         pointToLayer: function(feature, coordinates) {
             return L.circleMarker(coordinates);
-        };
+        },
     
-    
-    })
+        //stylize these markers
+
+        style: featStyle,
+
+
+    }).addTo(map);
 
 
 
