@@ -104,21 +104,28 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
     //Now we need to create a legend and add it to the map.
     var legend = L.control({
-        position: "topright"
+        position: "bottomleft"
     });
     
     //add to fill the legend with the relevant info
     legend.onAdd = function() {
         var div = L.DomUtil.create("div", "info legend");
-        var colors = ["#07f22b","#8fe004","#d9e004","#e08804","#e04604","#d41002"]
+        var colors = ["#07f22b","#8fe004","#d9e004","#e08804","#e04604","#d41002"];
         var levels = [0, 20, 40, 60, 80, 100]
-        
 
+        //iterate through these to get color for each interval
+;
+        
+        for (var i = 0; i < levels.length; i++) {
+            div.innerHTML += "<i style='background: " + colors[i] + "'></i> "
+            + levels[i] + (levels[i + 1] ? "&ndash;" + levels[i + 1] + "<br><br>" : "+");
+          }
+          return div;
+        };
     
 
 
 
-    }
-
+ 
     legend.addTo(map);
 });
