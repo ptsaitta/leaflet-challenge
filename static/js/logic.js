@@ -37,7 +37,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     function featStyle(feature) {
         return {
             fillColor: getColor(feature.geometry.coordinates[2]),
-            radius: getRadius(feature.property.mag)
+            radius: getRadius(feature.properties.mag)
         };
     }
 
@@ -88,10 +88,10 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
         onEachFeature: function(feature, layer) {
             layer.bindPopup(
-                "Magnitude Recorded: " + features.properties.mag +
-                " Depth of Event: " + features.geometry.coordinates[2] + 
-                " General Location: " + features.properties.place + 
-                " Time: " + features.properties.time
+                "Magnitude Recorded: " + feature.properties.mag +
+                " Depth of Event: " + feature.geometry.coordinates[2] + 
+                " General Location: " + feature.properties.place + 
+                " Time: " + feature.properties.time
             );
         }
 
@@ -100,4 +100,4 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
 
 
-}
+});
