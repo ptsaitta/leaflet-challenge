@@ -6,6 +6,7 @@ var mapInit = L.tileLayer(
     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
     id: "mapbox/dark-v10",
     tileSize: 512,
+    maxZoom: 16,
     zoomOffset : -1,
     accessToken: API_KEY
   }
@@ -14,8 +15,8 @@ var mapInit = L.tileLayer(
 //create map, div id is "mapid"
 
 var map = L.map("mapid", {
-    zoom: 3,
-    center: [40.7, -73.9]
+    zoom: 4,
+    center: [47.4, -122.3]
 }
 );
 
@@ -37,7 +38,10 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     function featStyle(feature) {
         return {
             fillColor: getColor(feature.geometry.coordinates[2]),
-            radius: getRadius(feature.properties.mag)
+            fillOpacity: 1,
+            radius: getRadius(feature.properties.mag),
+            color: "#FFFFFF",
+            stroke: true
         };
     }
 
@@ -69,7 +73,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
     function getRadius(magnitude) {
 
-        return magnitude;
+        return magnitude*5;
     }
 
 
