@@ -24,4 +24,33 @@ var map = L.map("mapid", {
 mapInit.addTo(map);
 
 
+//now retrieve data to use for the map, and create functions to stylize points on map based on values
+//style of color and radius will be determined by magnitude
+
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson", function(data) {
+
+//define functions to get color and radius, and set feature (earthquake) style to match those values
+
+//color is defined by feat DEPTH
+
+function getColor(depth) = {
+    //switch will be useful to come up with 5 colors or so to bin earthquakes into
+
+    switch(true) {
+        
+
+    }
+}
+    
+
+
+
+
+
+
+
+}
+
+
+
 
